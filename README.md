@@ -1,10 +1,10 @@
-# postgresELKDockerStack (this name will change but not now)
+# Enterprise web stack
 
-TODO brief here
+"MVC it' good for web, but should not do architectural stuff, let's crush monoliths!
 
 ## Scope of the project
 
-With this project we want to create a web development infrastructure ready to scale and easy manteinable.
+With this project we want to create a web development architecture ready to scale and easly manteinable.
 
 Usually when a web project becomes big happens that using an unique monolithic MVC framework become hard to mantain for different reasons, but first of all, view models speciation.
 
@@ -40,13 +40,28 @@ But also it can collect informatios for other infrastructural services as proxie
 
 ## Instructions
 
+### First config
+
+Make all the bash files executable
+
+```
+sudo chmod +x ./bin/*.sh
+sudo chmod +x ./entrypoint/*.sh
+```
+
 ### Test postgres container
 
 Access the contianer:
+
 ```
 docker exec -it bash
 ```
+
 Once into the container:
+
 ```
 psql -U dbuser -h postgres dbproject
 ```
+### Test nginx container
+
+point your browser to www.project.dev and check for the welcome page

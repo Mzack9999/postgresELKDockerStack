@@ -1,0 +1,4 @@
+server {
+  host     ${API_REST_HOST};
+  listen   ${NGINX_PORT};
+}

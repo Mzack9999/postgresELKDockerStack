@@ -1,0 +1,4 @@
+server {
+  host     ${API_SEARCH_HOST};
+  listen   ${NGINX_PORT};
+}
