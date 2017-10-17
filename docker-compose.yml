@@ -1,17 +1,8 @@
 version: '3.3'
 
 services:
-  postgres:
-    container_name: postgres
-    image: postgres:latest
-    restart: always
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_DB: ${POSTGRES_DB}
-      PGDATA: ${POSTGRES_DATA_DIR}
-  elastic:
-    container_name: elastic
+  elastic-search:
+    container_name: elastic-search
     image: docker.elastic.co/elasticsearch/elasticsearch:5.6.3
     restart: always
     environment:
@@ -23,6 +14,34 @@ services:
       memlock:
         soft: -1
         hard: -1
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    restart: always
+    environment:
+      API_REST_HOST: ${API_REST_HOST}
+      API_SEARCH_HOST: ${API_SEARCH_HOST}
+      WEB_HOST: ${WEB_HOST}
+      NGINX_PORT: ${NGINX_PORT}
+      NGINX_CONFIG_FILE_PATH: ${NGINX_CONFIG_FILE_PATH}
+      NGINX_SITES_ENABLED_DIRECTORY: ${NGINX_SITES_ENABLED_DIRECTORY}
+    volumes:
+      - ./entrypoint/nginx.sh:/entrypoint.sh
+      - ./conf/nginx/nginx.conf:/tmp/${NGINX_CONFIG_FILE_PATH}
+      - ./conf/nginx/sites-enabled:/tmp/${NGINX_SITES_ENABLED_DIRECTORY}
+    entrypoint: /entrypoint.sh
+
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      PGDATA: ${POSTGRES_DATA_DIR}
+
 volumes:
   esdata:
     driver: local
