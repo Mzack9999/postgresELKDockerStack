@@ -11,3 +11,5 @@ done
 
 # echo "Substituting variables from /tmp/${NGINX_CONFIG_FILE_PATH} to ${NGINX_SITES_ENABLED_DIRECTORY}"
 envsubst < "/tmp/${NGINX_CONFIG_FILE_PATH}" > "${NGINX_CONFIG_FILE_PATH}"
+
+nginx -g 'daemon off;' #TODO: This should be handled already by the Dockerfile itself
