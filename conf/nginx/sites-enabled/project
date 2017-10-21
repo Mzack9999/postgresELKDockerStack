@@ -1,4 +1,4 @@
 server {
-  host     ${WEB_HOST};
+  server_name     ${WEB_HOST};
   listen   ${NGINX_PORT};
 }
