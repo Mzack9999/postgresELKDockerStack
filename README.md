@@ -49,6 +49,12 @@ sudo chmod +x ./bin/*.sh
 sudo chmod +x ./entrypoint/*.sh
 ```
 
+Launch in order to synchronize nginx hosts to your local machine:
+
+```
+./bin/configure_local_hosts_file.sh
+```
+
 ### Test postgres container
 
 Access the contianer:
