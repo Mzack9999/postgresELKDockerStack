@@ -12,14 +12,14 @@ Use an all-in-one MVC framework it's a good choice, but the problem starts when 
 
 What happen usually it's that domain objects become heavy and rich in additional properties or worst become humus for extreme data denormalization.
 
-Domain objects should instead stay small and well organized in order to have an healthy project growth and for easiness of maintenance.
+Domain objects should instead stay small and well organized in order to have an healthy project growth.
 
 ### Part 1 - DOMAIN LOGIC APIs
 
 As said a modern MVC framework should be enough to produce domain logic.
 First step should be to create a relational mapping for domain objects and then expose simple C.R.U.D. operations via rest APIs.
 
-This means that complex aggregation queries used for search, should be kept off this set of apis, that should only allow their user to create, read, update and delete domain objects.
+This means that complex aggregation queries used for search, should be kept off this set of APIs, that should only allow their user to create, read, update and delete domain objects.
 
 Listing or search this object should not be allowed, as well as aggregate informations about them.
 The only listing operation admited should be list with pagination or retriver one entry by id.
@@ -57,7 +57,7 @@ Launch in order to synchronize nginx hosts to your local machine:
 
 ### Test postgres container
 
-Access the contianer:
+Access the container:
 
 ```
 docker exec -it bash
