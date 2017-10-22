@@ -13,6 +13,12 @@ sudo chmod +x ./bin/*.sh
 sudo chmod +x ./entrypoint/*.sh
 ```
 
+Add  hosts to your local host file (only for dev environent in local)
+
+```
+./bin/configure_local_hosts_file.sh
+```
+
 ## Test postgres container
 Access the contianer:
 ```
