@@ -1,4 +1,6 @@
 server {
-  server_name     ${WEB_HOST};
-  listen   ${NGINX_PORT};
+  listen ${NGINX_PORT};
+  listen [::]:${NGINX_PORT};
+
+  server_name ${WEB_HOST} ${WEB_HOST_WWW};
 }

@@ -25,7 +25,7 @@ function addhost() {
 
             if [ -n "$(grep ${HOST_NAME} ${HOST_HOSTS_FILE_PATH})" ]
                 then
-                    echo "${HOST_NAME} added \n $(grep ${HOST_NAME} ${HOST_HOSTS_FILE_PATH})";
+                    echo "${HOST_NAME} added";
                 else
                     echo "Failed to Add ${HOST_NAME}";
             fi
@@ -35,9 +35,11 @@ function addhost() {
 removehost "${API_REST_HOST}"
 removehost "${API_SEARCH_HOST}"
 removehost "${WEB_HOST}"
+removehost "${WEB_HOST_WWW}"
 
 addhost "${API_REST_HOST}"
 addhost "${API_SEARCH_HOST}"
 addhost "${WEB_HOST}"
+addhost "${WEB_HOST_WWW}"
 
 cat "${HOST_HOSTS_FILE_PATH}"
