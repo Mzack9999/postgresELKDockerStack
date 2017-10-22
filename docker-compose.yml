@@ -26,6 +26,8 @@ services:
       NGINX_PORT: ${NGINX_PORT}
       NGINX_CONFIG_FILE_PATH: ${NGINX_CONFIG_FILE_PATH}
       NGINX_SITES_ENABLED_DIRECTORY: ${NGINX_SITES_ENABLED_DIRECTORY}
+    ports:
+      - ${HOST_NGINX_PORT}:${NGINX_PORT}
     volumes:
       - ./entrypoint/nginx.sh:/entrypoint.sh
       - ./conf/nginx/nginx.conf:/tmp/${NGINX_CONFIG_FILE_PATH}
