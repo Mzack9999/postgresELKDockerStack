@@ -22,16 +22,22 @@ services:
     environment:
       API_REST_HOST: ${API_REST_HOST}
       API_SEARCH_HOST: ${API_SEARCH_HOST}
+      API_REST_SOURCE_PATH: ${API_REST_SOURCE_PATH}
+      API_SEARCH_SOURCE_PATH: ${API_SEARCH_SOURCE_PATH}
+      WEB_SOURCE_PATH: ${WEB_SOURCE_PATH}
       WEB_HOST: ${WEB_HOST}
+      WEB_HOST_WWW: ${WEB_HOST_WWW}
       NGINX_PORT: ${NGINX_PORT}
       NGINX_CONFIG_FILE_PATH: ${NGINX_CONFIG_FILE_PATH}
       NGINX_SITES_ENABLED_DIRECTORY: ${NGINX_SITES_ENABLED_DIRECTORY}
+      NGINX_SOURCE_PATH: ${NGINX_SOURCE_PATH}
     ports:
       - ${HOST_NGINX_PORT}:${NGINX_PORT}
     volumes:
       - ./entrypoint/nginx.sh:/entrypoint.sh
       - ./conf/nginx/nginx.conf:/tmp/${NGINX_CONFIG_FILE_PATH}
       - ./conf/nginx/sites-enabled:/tmp/${NGINX_SITES_ENABLED_DIRECTORY}
+      - ./src/http:${NGINX_SOURCE_PATH}
     entrypoint: /entrypoint.sh
 
   postgres:

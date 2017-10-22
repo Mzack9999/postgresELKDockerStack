@@ -3,4 +3,11 @@ server {
   listen [::]:${NGINX_PORT};
 
   server_name ${WEB_HOST} ${WEB_HOST_WWW};
+  index index.html;
+
+  root ${NGINX_SOURCE_PATH}${WEB_SOURCE_PATH};
+
+  location / {
+        try_files $uri $uri/ =404;
+  }
 }
