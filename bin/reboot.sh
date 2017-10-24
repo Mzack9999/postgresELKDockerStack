@@ -4,5 +4,7 @@
 # given docker-compose file.
 # It's denstructive since it causes all volumes data loss
 
+set -o errexit ; set -o nounset
+
 docker-compose rm -fsv
 docker-compose up -d --force-recreate --remove-orphans
